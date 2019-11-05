@@ -1,0 +1,18 @@
+Configuration of this project:
+
+01. First clone this repo
+02. "Composer update" command run
+03. Database create
+04. chnage .env.example to .env and other confiration
+05. "php artisan migration" command run
+06. "php artisan db:seed" command run for user create or sign up
+07. login and others activities
+
+Using language and Technologies:
+
+01: Laravel 5.8 of php 
+02  Database => mysql
+03. Repository design pattern
+04. html css jquery and others
+
+
