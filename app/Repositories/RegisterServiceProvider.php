@@ -20,8 +20,8 @@ class RegisterServiceProvider extends ServiceProvider
 		);
 
 		$this->app->bind(
-			TransactionRepositoryInterface::class,
-			TransactionRepository::class	
+			TransactionProfileRepositoryInterface::class,
+			TransactionProfileRepository::class	
 		);
 
 		$this->app->bind(

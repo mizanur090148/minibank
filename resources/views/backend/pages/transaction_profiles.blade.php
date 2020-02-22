@@ -2,15 +2,15 @@
 @section('content')
   <div class="page-header row no-gutters py-4">
     <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-      <h3 class="page-title">Deposit</h3>
+      <h3 class="page-title">Transaction Profiles</h3>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">   
-          <a class="btn btn-sm btn-info" href="{{ url('deposit/create') }}">
-            <i class="glyphicon glyphicon-plus"></i> New Deposit
+          <a class="btn btn-sm btn-info" href="{{ url('transaction-profiles/create') }}">
+            <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
           </a>
         </div>
         @include('backend.partials.response_message')

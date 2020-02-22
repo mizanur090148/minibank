@@ -29,9 +29,9 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 	Route::get('/transaction/create', 'TransactionController@create');
 	Route::post('/transaction-post', 'TransactionController@transactionPost');
 
-	Route::get('/deposites', 'DepositController@all');
-	Route::get('/deposit/create', 'DepositController@create');
-	Route::post('/deposit-post', 'DepositController@transactionPost');	
+	Route::get('/transaction-profiles', 'TransactionProfileController@index');
+	Route::get('/transaction-profiles/create', 'TransactionProfileController@create');
+	Route::post('/transaction-profiles', 'TransactionProfileController@transactionPost');	
 
 	Route::get('/account-info', 'DepositController@accountInfo');
 	Route::get('/change-account-info', 'AccountController@changeAccountInfo');

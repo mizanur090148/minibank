@@ -24,9 +24,9 @@
   <div class="nav-wrapper">
     <ul class="nav flex-column">      
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(1) == 'deposites') active @endif" href="{{ url('/deposites') }}">
+        <a class="nav-link @if(Request::segment(1) == 'transaction-profiles') active @endif" href="{{ url('/transaction-profiles') }}">
           <i class="material-icons">note_add</i>
-          <span>Deposites</span>
+          <span>Transaction Profiles</span>
         </a>
       </li>
       <li class="nav-item">

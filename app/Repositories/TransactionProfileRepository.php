@@ -4,7 +4,7 @@ namespace App\Repositories;
 use App\Models\Transaction;
 use App\Models\User;
 
-class TransactionRepository implements TransactionRepositoryInterface
+class TransactionProfileRepository implements TransactionProfileRepositoryInterface
 {
 	public function all(array $with, array $where, $orderByColumn, $orderDirection)
 	{

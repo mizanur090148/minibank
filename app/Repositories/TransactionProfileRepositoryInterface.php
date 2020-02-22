@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface TransactionRepositoryInterface 
+interface TransactionProfileRepositoryInterface 
 {
 	public function all(array $with, array $where, $orderByColumn, $orderDirection);
 	public function create();
