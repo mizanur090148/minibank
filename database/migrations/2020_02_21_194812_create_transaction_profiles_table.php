@@ -15,6 +15,7 @@ class CreateTransactionProfilesTable extends Migration
     {
         Schema::create('transaction_profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('tp_no')->nullable();
             $table->date('inquiry_date')->nullable();
             $table->string('inquiry_reference_no')->nullable();
             $table->string('item_particulars')->nullable();
@@ -23,7 +24,7 @@ class CreateTransactionProfilesTable extends Migration
             $table->string('beneficiary')->nullable();
             $table->string('beneficiary_bank')->nullable();
             $table->string('swift_code')->nullable();
-            $table->string('proforma_invoice_o')->nullable();
+            $table->string('proforma_invoice_no')->nullable();
             $table->string('invoice_value')->nullable();
             $table->string('shipment_date')->nullable();
             $table->string('part_shipment')->nullable();

@@ -9,3 +9,4 @@
 <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="{{ asset('/backend/css/shards-dashboards.1.1.0.min.css') }}">
 <link rel="stylesheet" href="{{ asset('/backend/css/extras.1.1.0.min.css') }}">
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+<link rel="stylesheet" href="{{ asset('/backend/css/custom.css') }}">

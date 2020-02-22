@@ -1,10 +1,4 @@
 @extends('backend.layout')
-@section('styles')
-  <style type="text/css">
-   
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.css" />
-@endsection
 @section('content')
  <div class="page-header row no-gutters py-4">
   <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
@@ -19,104 +13,149 @@
         <h6 class="m-0 font-weight-bold">New Transaction Profile(UPAS)</h6>
       </div>
       <div class="card-body card-block">
-        {!! Form::open(['url' => 'deposit-post', 'method' => 'POST']) !!}
-          <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+        {!! Form::model($transaction_profile, ['url' => $transaction_profile ? 'transaction-profiles/'. $transaction_profile->id : 'transaction-profiles', 'method' => $transaction_profile ? 'PUT' : 'POST']) !!}
+          <div class="row form-group" style="margin: 0px !important">
             <div class="col-4">
               <div class="form-group">
                 <label for="first-name" class=" form-control-label font-weight-bold">Inquiry Date</label>
-                <input type="text" id="city" class="form-control" name="inquiry_date" placeholder="Enter Inquiry Date">
+                {!! Form::date('inquiry_date', null, ['class'=> 'form-control', 'placeholder' => 'Enter Inquiry Date']) !!}
+                @if($errors->has('inquiry_date'))
+                  <span class="text-danger">{{ $errors->first('inquiry_date') }}</span>
+                 @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="first-name" class=" form-control-label font-weight-bold">Inquiry Reference No.</label>
-                <input type="text" id="city" class="form-control" name="inquiry_reference_no" placeholder="Enter Inquiry Reference No.">
+                {!! Form::text('inquiry_reference_no', null, ['class'=> 'form-control', 'placeholder' => 'Enter Inquiry Reference No.']) !!}
+                @if($errors->has('inquiry_reference_no'))
+                  <span class="text-danger">{{ $errors->first('inquiry_reference_no') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="last-name" class=" form-control-label font-weight-bold">Item Particulars</label>
-                <input type="text" id="postal-code" class="form-control" name="item_particulars" placeholder="Enter Item Particulars">
+                {!! Form::text('item_particulars', null, ['class'=> 'form-control', 'placeholder' => 'Enter Item Particulars']) !!}
+                @if($errors->has('item_particulars'))
+                  <span class="text-danger">{{ $errors->first('item_particulars') }}</span>
+                @endif
               </div>
             </div>          
           </div>
-          <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+          <div class="row form-group" style="margin: 0px !important">
             <div class="col-4">
               <div class="form-group">
                 <label for="screen_name" class=" form-control-label font-weight-bold">Applicant</label>
-                <input type="type" id="screen_name" class="form-control" name="applicant" placeholder="Enter Applicant">
+                {!! Form::text('applicant', null, ['class'=> 'form-control', 'placeholder' => 'Enter Applicant']) !!}
+                @if($errors->has('applicant'))
+                  <span class="text-danger">{{ $errors->first('applicant') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="email" class=" form-control-label font-weight-bold">L/C Issuing Bank</label>
-                <input type="type" id="email" class="form-control" name="lc_issuing_bank" placeholder="Enter L/C Issuing Bank">
+                {!! Form::text('lc_issuing_bank', null, ['class'=> 'form-control', 'placeholder' => 'Enter L/C Issuing Bank']) !!}
+                @if($errors->has('lc_issuing_bank'))
+                  <span class="text-danger">{{ $errors->first('lc_issuing_bank') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="phone-no" class=" form-control-label font-weight-bold">Beneficiary</label>
-                <input type="text" id="phone-no" class="form-control" name="beneficiary" placeholder="Enter Beneficiary">
+                {!! Form::text('beneficiary', null, ['class'=> 'form-control', 'placeholder' => 'Enter Beneficiary']) !!} 
+                @if($errors->has('beneficiary'))
+                  <span class="text-danger">{{ $errors->first('beneficiary') }}</span>
+                @endif       
               </div>
             </div>          
           </div>
-          <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+          <div class="row form-group" style="margin: 0px !important">
             <div class="col-4">
               <div class="form-group">
                 <label for="phone-no" class=" form-control-label font-weight-bold">Beneficiary Bank</label>
-                <input type="text" id="phone-no" class="form-control" name="beneficiary_bank" placeholder="Enter Beneficiary Bank">
+                {!! Form::text('beneficiary_bank', null, ['class'=> 'form-control', 'placeholder' => 'Enter Beneficiary Bank']) !!}   
+                @if($errors->has('beneficiary_bank'))
+                  <span class="text-danger">{{ $errors->first('beneficiary_bank') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="postal-code" class=" form-control-label font-weight-bold">Swift Code</label>
-                <input type="text" id="postal-code" class="form-control" name="swift_code" placeholder="Enter Swift Code">
+                {!! Form::text('swift_code', null, ['class'=> 'form-control', 'placeholder' => 'Enter Swift Code']) !!}
+                @if($errors->has('swift_code'))
+                  <span class="text-danger">{{ $errors->first('swift_code') }}</span>
+                @endif        
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="postal-code" class=" form-control-label font-weight-bold">Proforma Invoice No.</label>
-                <input type="text" id="postal-code" class="form-control" name="proforma_invoice_o" placeholder="Enter Proforma Invoice No">
+                {!! Form::text('proforma_invoice_no', null, ['class'=> 'form-control', 'placeholder' => 'Enter Proforma Invoice No']) !!}
+                @if($errors->has('proforma_invoice_no'))
+                  <span class="text-danger">{{ $errors->first('proforma_invoice_no') }}</span>
+                @endif
               </div>
             </div>          
           </div>
-          <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+          <div class="row form-group" style="margin: 0px !important">
             <div class="col-4">
               <div class="form-group">
                 <label for="postal-code" class=" form-control-label font-weight-bold">Invoice Value</label>
-                <input type="text" id="postal-code" class="form-control" name="invoice_value" placeholder="Enter Invoice Value">
+                {!! Form::text('invoice_value', null, ['class'=> 'form-control', 'placeholder' => 'Enter Invoice Value']) !!}
+                @if($errors->has('invoice_value'))
+                  <span class="text-danger">{{ $errors->first('invoice_value') }}</span>
+                @endif        
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="phone-no" class=" form-control-label font-weight-bold">Shipment date</label>
-                <input type="date" class="form-control" name="shipment_date" placeholder="Enter Shipment date">
+                {!! Form::date('shipment_date', null, ['class'=> 'form-control', 'placeholder' => 'Enter Shipment date']) !!}
+                @if($errors->has('shipment_date'))
+                  <span class="text-danger">{{ $errors->first('shipment_date') }}</span>
+                @endif
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="phone-no" class=" form-control-label font-weight-bold">Part Shipment</label>
-                <input type="text" class="form-control" name="part_shipment" placeholder="Enter Part Shipment">
+                {!! Form::text('part_shipment', null, ['class'=> 'form-control', 'placeholder' => 'Enter Part Shipment']) !!}
+                @if($errors->has('part_shipment'))
+                  <span class="text-danger">{{ $errors->first('part_shipment') }}</span>
+                @endif            
               </div>
             </div>          
           </div>
-          <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+          <div class="row form-group" style="padding: 0px !important; margin: 0px !important">
             <div class="col-4">
               <div class="form-group">
                 <label for="postal-code" class=" form-control-label font-weight-bold">Port Of Loading</label>
-                <input type="text" class="form-control" name="port_of_loading" placeholder="Enter Port Of Loading">
+                {!! Form::text('port_of_loading', null, ['class'=> 'form-control', 'placeholder' => 'Enter Port Of Loading']) !!}  
+                @if($errors->has('port_of_loading'))
+                  <span class="text-danger">{{ $errors->first('port_of_loading') }}</span>
+                @endif          
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="postal-code" class=" form-control-label font-weight-bold">Port Of Discharge</label>
-                <input type="text" class="form-control" name="port_of_discharge" placeholder="Enter Port Of Discharge">
+                {!! Form::text('port_of_discharge', null, ['class'=> 'form-control', 'placeholder' => 'Enter Port Of Discharge']) !!}
+                @if($errors->has('port_of_discharge'))
+                  <span class="text-danger">{{ $errors->first('port_of_discharge') }}</span>
+                @endif           
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="phone-no" class=" form-control-label font-weight-bold">Tenure Of UPAS</label>
-                <input type="text" class="form-control" name="tenure_of_upas" placeholder="Enter Tenure Of UPAS">
+                {!! Form::text('tenure_of_upas', null, ['class'=> 'form-control', 'placeholder' => 'Enter Tenure Of UPAS']) !!} 
+                @if($errors->has('tenure_of_upas'))
+                  <span class="text-danger">{{ $errors->first('tenure_of_upas') }}</span>
+                @endif
               </div>
             </div>
           </div>
@@ -124,7 +163,7 @@
           <div class="form-group row m-t-md">
             <div class="col-sm-offset-5 col-sm-12 text-center">
               <button type="submit" class="btn btn-success btn-rounded m-b-10 m-l-5">Submit</button>
-              <button type="submit" class="btn btn-danger btn-rounded m-b-10 m-l-5">Reset</button>
+              <a href="{{ url('/') }}" class="btn btn-danger btn-rounded m-b-10 m-l-5">Reset</a>
             </div>
           </div>
         {!! Form::close() !!}
@@ -132,12 +171,4 @@
     </div>
   </div>
 </div>
-@endsection
-@section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-$('.mm').select2();
-});
-</script>
 @endsection

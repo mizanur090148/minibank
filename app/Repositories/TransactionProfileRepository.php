@@ -1,39 +1,42 @@
 <?php
 
 namespace App\Repositories;
-use App\Models\Transaction;
+use App\Models\TransactionProfile;
 use App\Models\User;
 
 class TransactionProfileRepository implements TransactionProfileRepositoryInterface
 {
 	public function all(array $with, array $where, $orderByColumn, $orderDirection)
 	{
-		return Transaction::with($with)
+		return TransactionProfile::with($with)
 			->where($where)
 			->orderBy($orderByColumn, $orderDirection)
-			->paginate();
+			->paginate(15);
 	}
 
-	public function create()
+	public function show($id)
 	{
-		return User::where('role_type', USER)->get();
+		return TransactionProfile::findOrFail($id);
 	}
-	
-	public function store(array $credentials)
+
+	public function store(array $input)
 	{
-		return Transaction::create($credentials);
-	}	
+		return TransactionProfile::create($input);
+	}
+
+	public function update($id, array $input)
+	{
+		return TransactionProfile::findOrFail($id)->update($input);
+	}
 
 	public function search($q)
 	{
-		return Transaction::where('name', 'like', '%'. $q .'%')->paginate();
+		return TransactionProfile::where('name', 'like', '%'. $q .'%')->paginate();
 	}
 
-	public function accountInfo()
-	{
-		return Transaction::where('receiver_id', userId())
-			->orWhere('sender_id', userId())
-			->get();
-	}
+	public function destroy($id)
+    {
+    	return TransactionProfile::destroy($id);
+    }   
 	
 }

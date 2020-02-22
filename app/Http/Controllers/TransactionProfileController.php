@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\TransactionProfileRepositoryInterface;
+use App\Http\Requests\TransactionProfileRequest;
+use Session;
 
 class TransactionProfileController extends Controller
 {
     
     private $tp;
+
     public function __construct(TransactionProfileRepositoryInterface $tp)
     {
     	$this->tp = $tp;
@@ -18,59 +21,70 @@ class TransactionProfileController extends Controller
     {   		
    		$orderByColumn = 'id';
    		$orderDirection = 'desc';
-	    $where = [
-	        'transaction_status' => OWN
-	    ];
-   		$deposites = $this->tp->all($with = [], $where, $orderByColumn, $orderDirection);
+	    $where = [];
+
+   		$transaction_profiles = $this->tp->all($with = [], $where, $orderByColumn, $orderDirection);
 
    		return view('backend.pages.transaction_profiles', [
-   			'deposites' => $deposites
+   			'transaction_profiles' => $transaction_profiles
    		]);
     }
 
     public function create()
     {
-    	return view('backend.forms.transaction_profile');
+    	return view('backend.forms.transaction_profile', [
+        'transaction_profile' => null
+      ]);
     }
 
-    public function TransactionPost(DepositRequest $request)
+    public function store(TransactionProfileRequest $request)
     {
-    	try {
-    		$input = [
-    			'receiver_id' => userId(),
-    			'amount' => $request->amount,
-    			'sender_id' => userId(),
-    			'remarks' => $request->remarks
-    		];
-   			$this->transaction->store($input);
-        
+    	try {    		
+   			$this->tp->store($request->all());        
    			Session::flash('success', S_SAVE);
-   			return redirect('deposites');
+   			return redirect('transaction-profiles');
    		} catch (Exception $e) {
    			Session::flash('success', $e->getMessage());
    		}
    		return redirect()->back();
     }
 
-    public function accountInfo()
+    public function edit($id)
     {
+      try {
+        $transaction_profile = $this->tp->show($id);
 
-      $transactions = $this->transaction->accountInfo();;
-      
-      $total_deposit = $transactions->where('receiver_id', userId())
-          ->where('transaction_status', OWN)
-          ->sum('amount');
+        return view('backend.forms.transaction_profile', [
+          'transaction_profile' => $transaction_profile
+        ]);
 
-      $total_sent = $transactions->where('sender_id', userId())
-          ->where('transaction_status', OTHERS)
-          ->sum('amount');
-
-      $current_balance = $total_deposit - $total_sent; 
-
-      return view('backend.pages.account', [
-        'current_balance' => $current_balance,
-        'total_deposit' => $total_deposit,
-        'total_sent' => $total_sent
-      ]);     
+      } catch (Exception $e) {
+        Session::flash('success', $e->getMessage());
+      }
+      return redirect()->back();
     }
+
+    public function update($id, TransactionProfileRequest $request)
+    {
+      try {
+        $this->tp->update($id, $request->all());
+        Session::flash('success', S_UPDATE);
+        return redirect('transaction-profiles');
+      } catch (Exception $e) {
+        Session::flash('success', $e->getMessage());
+      }
+      return redirect()->back();
+    }
+
+    public function destroy($id)
+    {
+      try {
+        $this->tp->destroy($id);
+        Session::flash('success', S_DELETE);
+        return redirect('transaction-profiles');
+      } catch (Exception $e) {
+        Session::flash('success', $e->getMessage());
+      }
+      return redirect()->back();
+    }    
 }

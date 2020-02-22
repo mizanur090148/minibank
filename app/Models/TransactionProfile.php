@@ -1,8 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TransactionProfile extends Model
 {
@@ -17,7 +18,7 @@ class TransactionProfile extends Model
     	'beneficiary',
     	'beneficiary_bank',
     	'swift_code',
-    	'proforma_invoice_o',
+    	'proforma_invoice_no',
     	'invoice_value',
     	'shipment_date',
     	'part_shipment',

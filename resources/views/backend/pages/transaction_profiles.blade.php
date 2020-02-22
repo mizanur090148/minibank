@@ -12,43 +12,50 @@
           <a class="btn btn-sm btn-info" href="{{ url('transaction-profiles/create') }}">
             <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
           </a>
-        </div>
-        @include('backend.partials.response_message')
+        </div>        
 
-        <div class="card-body p-0 pb-3 text-center">
-          <table class="table table-sm">
+        <div class="card-body  text-center">
+          @include('backend.partials.response_message')
+
+          <table class="reportTable">
             <thead class="bg-light">
               <tr>
-                <th scope="col" class="border-0">#</th>
-                <th scope="col" class="border-0">Transaction ID</th>     
-                <th scope="col" class="border-0">Amount</th>
-                <th scope="col" class="border-0">Remarks</th>
+                <th>#</th>
+                <th>Inquiry Date</th>
+                <th>Inquiry Ref. No</th>
+                <th>Applicant</th>
+                <th>L/C Issuing Bank Date</th>
+                <th>Beneficiary</th>
+                <th>Beneficiary Bank</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              @forelse($deposites as $deposite)
+              @forelse($transaction_profiles as $tp)
                 <tr>
                   <td>{{ $loop->iteration }}</td>
-                  <td>{{ str_pad($deposite->id, 10, '0', STR_PAD_LEFT) }}</td>
-                  <td>{{ $deposite->amount }}</td>
-                  <td>{{ $deposite->remarks }}</td>
-                </tr>
-              @empty
-                <tr>
-                  <td colspan="4" class="text-danger">Not found</td>
-                </tr>
-              @endforelse
-            </tbody>
-            <tfoot>
-              @if($deposites->total() > 15)
-                <tr>
-                  <td colspan="4" align="center">
-                    {{ $deposites->appends(request()->except('page'))->links() }}
+                  <td>{{ $tp->inquiry_date }}</td>
+                  <td>{{ $tp->inquiry_reference_no }}</td>
+                  <td>{{ $tp->applicant }}</td>
+                  <td>{{ $tp->lc_issuing_bank }}</td>
+                  <td>{{ $tp->beneficiary }}</td>
+                  <td>{{ $tp->beneficiary_bank }}</td>
+                  <td>
+                    <a href="{{ url('/transaction-profiles/'.$tp->id.'/edit') }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                    <a href="{{ url('/transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
+                    <a href="{{ url('/delete-transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?');"><i class="fa fa-times"></i></a>
                   </td>
                 </tr>
-              @endif
-            </tfoot>
+              @empty
+                <tr class="font-weight-bold text-danger tr-height">
+                  <td colspan="10">Data not found </td>
+                </tr>
+              @endforelse
+            </tbody>            
           </table>
+
+          {!! $transaction_profiles->render() !!}
+
         </div>
       </div>
     </div>

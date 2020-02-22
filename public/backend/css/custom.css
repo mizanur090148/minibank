@@ -1,0 +1,25 @@
+.reportTable {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 100%;
+}
+.reportTable thead,
+.reportTable tbody,
+.reportTable th {
+    padding: 3px;
+    font-size: 12px;
+    text-align: center;
+}
+.reportTable th,
+.reportTable td {
+    border: 1px solid #e7e7e7;
+}
+.reportTable thead > tr > th { 
+    background-color: #a7e3f9;
+}
+.reportTable {
+
+}
+.tr-height {
+	height: 30px !important;
+}

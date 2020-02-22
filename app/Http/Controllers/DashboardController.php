@@ -7,11 +7,11 @@ use App\Repositories\TransactionRepositoryInterface;
 
 class DashboardController extends Controller
 {
-    private $transaction;
+    /*private $transaction;
     public function __construct(TransactionRepositoryInterface $transaction)
     {
     	$this->transaction = $transaction;
-    }
+    }*/
 
     public function dashboard()
     {

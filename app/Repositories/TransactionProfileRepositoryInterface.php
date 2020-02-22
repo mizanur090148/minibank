@@ -5,8 +5,9 @@ namespace App\Repositories;
 interface TransactionProfileRepositoryInterface 
 {
 	public function all(array $with, array $where, $orderByColumn, $orderDirection);
-	public function create();
-	public function store(array $credentials);
+	public function store(array $input);
+	public function update($id, array $array);
+	public function show($id);
     public function search($q);
-    public function accountInfo();
+    public function destroy($id);
 }
