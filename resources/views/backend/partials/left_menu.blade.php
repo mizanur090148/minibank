@@ -29,12 +29,12 @@
           <span>Transaction Profiles</span>
         </a>
       </li>
-      <li class="nav-item">
+     {{--  <li class="nav-item">
         <a class="nav-link @if(Request::segment(1) == 'transactions') active @endif" href="{{ url('/transactions') }}">
           <i class="material-icons">note_add</i>
           <span>Transactions</span>
         </a>
-      </li>      
+      </li>       --}}
       <li class="nav-item">
         <a class="nav-link @if(Request::segment(1) == 'account-info') active @endif" href="{{ url('/account-info') }}">
           <i class="material-icons @if(Request::segment(1) == 'account-info') active @endif">person</i>

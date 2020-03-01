@@ -76,6 +76,15 @@ class TransactionProfileController extends Controller
       return redirect()->back();
     }
 
+    public function show($id)
+    {
+      $transaction_profile = $this->tp->show($id);
+
+      return view('backend.pages.show_transaction_profile', [
+        'transaction_profile' => $transaction_profile
+      ]);
+    }
+
     public function destroy($id)
     {
       try {

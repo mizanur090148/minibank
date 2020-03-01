@@ -9,10 +9,13 @@
     <div class="col">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">   
-          <a class="btn btn-sm btn-info" href="{{ url('transaction-profiles/create') }}">
-            <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
-          </a>
-        </div>        
+          {{-- {!! Form::open(['url' => '/search-transaction-profile', 'method' => 'get']) !!} --}}
+            <a class="btn btn-sm btn-success" href="{{ url('transaction-profiles/create') }}">
+              <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
+            </a>       
+           {{--  <input type="text" class="pull-right" name="q" style="width:180px" value="{{ request('q') ?? '' }}">
+           {!! Form::close() !!} --}}
+        </div>
 
         <div class="card-body  text-center">
           @include('backend.partials.response_message')
@@ -20,20 +23,20 @@
           <table class="reportTable">
             <thead class="bg-light">
               <tr>
-                <th>#</th>
+                <th>Transaction Profile No.</th>
                 <th>Inquiry Date</th>
                 <th>Inquiry Ref. No</th>
                 <th>Applicant</th>
                 <th>L/C Issuing Bank Date</th>
                 <th>Beneficiary</th>
                 <th>Beneficiary Bank</th>
-                <th>Actions</th>
+                <th width="14%">Actions</th>
               </tr>
             </thead>
             <tbody>
               @forelse($transaction_profiles as $tp)
                 <tr>
-                  <td>{{ $loop->iteration }}</td>
+                  <td>{{ str_pad($tp->id, 8, '0', STR_PAD_LEFT) }}</td>
                   <td>{{ $tp->inquiry_date }}</td>
                   <td>{{ $tp->inquiry_reference_no }}</td>
                   <td>{{ $tp->applicant }}</td>
@@ -41,9 +44,15 @@
                   <td>{{ $tp->beneficiary }}</td>
                   <td>{{ $tp->beneficiary_bank }}</td>
                   <td>
-                    <a href="{{ url('/transaction-profiles/'.$tp->id.'/edit') }}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                    <a href="{{ url('/transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                    <a href="{{ url('/delete-transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?');"><i class="fa fa-times"></i></a>
+                    <a href="{{ url('/transaction-profiles/'.$tp->id.'/edit') }}" class="btn btn-sm btn-success">
+                      <i class="fa fa-edit"></i>
+                    </a>
+                    <a href="{{ url('/transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-primary">
+                      <i class="fa fa-eye"></i>
+                    </a>
+                    <a href="{{ url('/delete-transaction-profiles/'.$tp->id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this?');">
+                      <i class="fa fa-times"></i>
+                    </a>
                   </td>
                 </tr>
               @empty

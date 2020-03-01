@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => 'guest'], function() {
-	Route::get('/', 'AuthController@home');
+	Route::get('/', 'AuthController@login');
 	Route::get('/signup', 'AuthController@signupForm');
 	Route::post('/signup-post', 'AuthController@signupPost');
 
@@ -33,7 +33,9 @@ Route::group(['middleware' => ['web', 'auth']], function() {
 	Route::post('/transaction-profiles', 'TransactionProfileController@store');	
 	Route::get('/transaction-profiles/{id}/edit', 'TransactionProfileController@edit');	
 	Route::put('/transaction-profiles/{id}', 'TransactionProfileController@update');
+	Route::get('/transaction-profiles/{id}', 'TransactionProfileController@show');
 	Route::get('/delete-transaction-profiles/{id}', 'TransactionProfileController@destroy');
+	Route::get('/search-transaction-profile', 'TransactionProfileController@index');
 
 	Route::get('/account-info', 'DepositController@accountInfo');
 	Route::get('/change-account-info', 'AccountController@changeAccountInfo');

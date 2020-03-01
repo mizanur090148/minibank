@@ -9,52 +9,7 @@
     </div>
   </div>
   @include('backend.partials.response_message')
-  <div class="row">   
-    <div class="col-lg-4">
-      <div class="card card-small mb-4">
-        <div class="card-header border-bottom">
-          <h6 class="m-0">Change Password</h6>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item p-3">
-            <div class="row">              
-              <div class="col">
-                {!! Form::open(['url' => 'change-password-post', 'method' => 'POST']) !!}
-                  <div class="form-row">
-                    <div class="form-group col-md-12">                     
-                      <label for="currentPassword">Current Password</label>
-                      {!! Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Enter current password']) !!}
-                      @if($errors->has('current_password'))
-                        <span class="text-danger">{{ $errors->first('current_password') }}</span>
-                      @endif
-                    </div>
-                  </div>                 
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="feFirstName">New Password</label>
-                      {!! Form::password('new_password', ['class' => 'form-control', 'placeholder' => 'Enter new password']) !!}
-                      @if($errors->has('new_password'))
-                        <span class="text-danger">{{ $errors->first('new_password') }}</span>
-                      @endif
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-12">
-                      <label for="feFirstName">Confirm Password</label>
-                      {!! Form::password('confirm_password', ['class' => 'form-control', 'placeholder' => 'Enter cofirm password']) !!}
-                      @if($errors->has('confirm_password'))
-                        <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
-                      @endif
-                    </div>                    
-                  </div>
-                  <button type="submit" class="btn btn-accent">Update Account</button>
-                {!! Form::close() !!}
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <div class="row">
     <div class="col-lg-8">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">
@@ -121,5 +76,50 @@
         </ul>
       </div>
     </div>
+    <div class="col-lg-4">
+      <div class="card card-small mb-4">
+        <div class="card-header border-bottom">
+          <h6 class="m-0">Change Password</h6>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item p-3">
+            <div class="row">              
+              <div class="col">
+                {!! Form::open(['url' => 'change-password-post', 'method' => 'POST']) !!}
+                  <div class="form-row">
+                    <div class="form-group col-md-12">                     
+                      <label for="currentPassword">Current Password</label>
+                      {!! Form::password('current_password', ['class' => 'form-control', 'placeholder' => 'Enter current password']) !!}
+                      @if($errors->has('current_password'))
+                        <span class="text-danger">{{ $errors->first('current_password') }}</span>
+                      @endif
+                    </div>
+                  </div>                 
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="feFirstName">New Password</label>
+                      {!! Form::password('new_password', ['class' => 'form-control', 'placeholder' => 'Enter new password']) !!}
+                      @if($errors->has('new_password'))
+                        <span class="text-danger">{{ $errors->first('new_password') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="feFirstName">Confirm Password</label>
+                      {!! Form::password('confirm_password', ['class' => 'form-control', 'placeholder' => 'Enter cofirm password']) !!}
+                      @if($errors->has('confirm_password'))
+                        <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
+                      @endif
+                    </div>                    
+                  </div>
+                  <button type="submit" class="btn btn-accent">Update Account</button>
+                {!! Form::close() !!}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>    
   </div>
 @endsection
