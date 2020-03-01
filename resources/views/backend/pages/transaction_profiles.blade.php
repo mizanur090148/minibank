@@ -9,12 +9,20 @@
     <div class="col">
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">   
-          {{-- {!! Form::open(['url' => '/search-transaction-profile', 'method' => 'get']) !!} --}}
-            <a class="btn btn-sm btn-success" href="{{ url('transaction-profiles/create') }}">
-              <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
-            </a>       
-           {{--  <input type="text" class="pull-right" name="q" style="width:180px" value="{{ request('q') ?? '' }}">
-           {!! Form::close() !!} --}}
+          <div class="row">
+            <div class="col-sm-3">       
+              <a class="btn btn-sm btn-success" href="{{ url('transaction-profiles/create') }}">
+                <i class="glyphicon glyphicon-plus"></i> New Transaction Profile
+              </a>      
+            </div> 
+            <div class="col-sm-6">
+            </div>
+            <div class="col-sm-3">
+              {!! Form::open(['url' => '/transaction-profiles', 'method' => 'get']) !!}
+                {!! Form::text('q', request('q') ?? null, ['class' => 'form-control', 'placeholder' => 'Enter search key here', 'width' => '100%']) !!}
+              {!! Form::close() !!}
+            </div>          
+           </div>
         </div>
 
         <div class="card-body  text-center">

@@ -1,4 +1,4 @@
-<aside class="main-sidebar col-12 col-md-3 col-lg-2 px-0">
+<aside class="main-sidebar noprint col-12 col-md-3 col-lg-2 px-0">
   <div class="main-navbar">
     <nav class="navbar align-items-stretch navbar-light bg-white flex-md-nowrap border-bottom p-0">
       <a class="navbar-brand w-100 mr-0" href="{{ url('/dashboard') }}" style="line-height: 25px;">
@@ -35,16 +35,16 @@
           <span>Transactions</span>
         </a>
       </li>       --}}
-      <li class="nav-item">
+      {{-- <li class="nav-item">
         <a class="nav-link @if(Request::segment(1) == 'account-info') active @endif" href="{{ url('/account-info') }}">
           <i class="material-icons @if(Request::segment(1) == 'account-info') active @endif">person</i>
           <span>Account Info</span>
         </a>
-      </li>
+      </li> --}}
       <li class="nav-item">
-        <a class="nav-link @if(Request::segment(1) == 'change-account-info') active @endif" href="{{ url('/change-account-info') }}">
+        <a class="nav-link @if(Request::segment(1) == 'account-info') active @endif" href="{{ url('/account-info') }}">
           <i class="material-icons">note_add</i>
-          <span>Change account Info</span>
+          <span>Account Info</span>
         </a>
       </li>
       <li class="nav-item">

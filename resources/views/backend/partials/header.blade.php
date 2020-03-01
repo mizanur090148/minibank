@@ -56,10 +56,10 @@
             <a class="dropdown-item" href="{{ url('/account-info') }}">
               <i class="material-icons">&#xE7FD;</i> Profile
             </a>           
-            <div class="dropdown-divider"></div>
+           {{--  <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ url('/change-account-info') }}">
               <i class="material-icons">&#xE7FD;</i> Change account Info
-            </a>           
+            </a>      --}}      
             <div class="dropdown-divider"></div>
             <a class="dropdown-item text-danger" href="{{ url('/logout') }}">
               <i class="material-icons text-danger">&#xE879;</i> Logout

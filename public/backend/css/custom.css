@@ -23,3 +23,9 @@
 .tr-height {
 	height: 30px !important;
 }
+
+@media print { 
+   .noprint { 
+      visibility: hidden; 
+   }
+} 

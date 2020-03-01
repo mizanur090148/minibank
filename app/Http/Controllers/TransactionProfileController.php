@@ -20,10 +20,10 @@ class TransactionProfileController extends Controller
     public function index()
     {   		
    		$orderByColumn = 'id';
-   		$orderDirection = 'desc';
-	    $where = [];
+   		$orderDirection = 'desc';	
+      $search_key = request('q') ?? null;
 
-   		$transaction_profiles = $this->tp->all($with = [], $where, $orderByColumn, $orderDirection);
+   		$transaction_profiles = $this->tp->all($with = [], $search_key, $orderByColumn, $orderDirection);
 
    		return view('backend.pages.transaction_profiles', [
    			'transaction_profiles' => $transaction_profiles

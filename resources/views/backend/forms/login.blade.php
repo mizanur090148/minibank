@@ -16,7 +16,7 @@
           @endif
           {!! Form::open(['url' => 'login-post', 'method' => 'POST']) !!}
             <div class="form-group">
-              <strong class="text-muted d-block mb-2">E-mail/Personal Code</strong>
+              <strong class="text-muted d-block mb-2">E-mail</strong>
               {!! Form::text('usernameOrEmail', null, ['class' => 'form-control', 'placeholder' => 'Enter email or personal code', 'required']) !!}
               @if($errors->has('email'))
                 <span class="text-danger">{{ $errors->first('email') }}</span>

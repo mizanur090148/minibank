@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 interface TransactionProfileRepositoryInterface 
 {
-	public function all(array $with, array $where, $orderByColumn, $orderDirection);
+	public function all(array $with, $search_key, $orderByColumn, $orderDirection);
 	public function store(array $input);
 	public function update($id, array $array);
 	public function show($id);

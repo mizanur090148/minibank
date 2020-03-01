@@ -10,7 +10,7 @@
       padding-left: 10px !important; 
       font-size: 13px !important;
       /*background: #307ad5dd6;*/
-    };   
+    }    
   </style>
 @endsection
 @section('content')
@@ -24,7 +24,7 @@
       <div class="card card-small mb-4">
         <div class="card-header border-bottom">   
           <h5 class="align-middle">Transaction Profile Information
-            <a href="#" class="float-right" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i></a>            
+            <a href="#" class="float-right noprint" onclick="window.print()"><i class="fa fa-print" aria-hidden="true"></i></a>            
           </h5>
         </div>
         <div class="card-body  text-center">
