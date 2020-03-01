@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request; 
-use App\HTTP\Requests\LoginRequest;
-use App\HTTP\Requests\SignupRequest;
-use App\HTTP\Requests\ChangePasswordRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SignupRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Repositories\AuthRepositoryInterface;
 use Session;
 
