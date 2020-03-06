@@ -1,4 +1,12 @@
 @extends('backend.layout')
+@section('styles')
+  <style type="text/css">   
+    label {
+      margin-bottom: 2px !important;
+      font-style: italic;
+    }    
+  </style>
+@endsection
 @section('content')
  <div class="page-header row no-gutters py-4">
   <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
