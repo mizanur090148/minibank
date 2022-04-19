@@ -39,7 +39,7 @@
             </div>
           </div>          
         </div>
-        <div class="row form-group" style="padding: opx !important; margin: 0px !important">
+        <div class="row form-group" style="padding: 0px !important; margin: 0px !important">
           <div class="col-4">
             <div class="form-group">
               <label for="screen_name" class=" form-control-label font-weight-bold">Applicant</label>

@@ -21,9 +21,7 @@
         </main>
       </div>
     </div>    
-    
     @include('backend.partials.scripts')
     @yield('scripts')
-    
   </body>
 </html>
